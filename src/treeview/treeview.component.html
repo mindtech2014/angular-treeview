@@ -1,5 +1,3 @@
-  <ul>
-    <li *ngFor="let treeItem of treeItems">
-      {{ hero }}
-    </li>
-  </ul>
+  <div *ngIf="treeNode.children && treeNode.children.length>0" class="tree-children">
+    <treenode [treeNode]="treeNode"></treenode>
+  </div>

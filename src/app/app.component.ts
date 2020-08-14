@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { TreeNode } from '../treeview/model/tree-node';
 
 @Component({
   selector: 'my-app',
@@ -7,4 +8,6 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
+
+  treeItems: TreeNode<String>[]=[];
 }

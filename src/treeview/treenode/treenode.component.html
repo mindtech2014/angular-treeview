@@ -1,0 +1,8 @@
+<div class="tree-node">
+  <span><i class="fa fa-plus-square" aria-hidden="true"></i>
+  <span>{{treeNode.label}}</span>
+  </span>
+  <div *ngIf="treeNode.children && treeNode.children.length>0" class="tree-children">
+    <treenode [treeNode]="treeNode"></treenode>
+  </div>
+</div>

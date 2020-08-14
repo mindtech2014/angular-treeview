@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'treeview',
   templateUrl: './treeview.component.html',
 })
-export class CardComponent{
+export class TreeViewComponent{
 
   @Input('treeItems') treeItems;
   
