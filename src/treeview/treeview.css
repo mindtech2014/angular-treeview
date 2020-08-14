@@ -1,0 +1,23 @@
+.tree-label
+{
+  padding: 5px;
+}
+.node-icon-exp
+{
+   width: 0px;
+    height: 0px;
+    display: inline-block;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid gray;
+}
+
+.node-icon-cal
+{
+   width: 0px;
+    height: 0px;
+    display: inline-block;
+   border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid gray;
+}

@@ -9,6 +9,6 @@ import { TreeNode } from './model/tree-node';
     CommonModule
   ],
   declarations: [TreeViewComponent,TreeNodeComponent]
-  ,exports: [TreeViewComponent, TreeNode]
+  ,exports: [TreeViewComponent]
 })
 export class TreeViewModule { }

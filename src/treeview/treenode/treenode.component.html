@@ -1,8 +1,12 @@
 <div class="tree-node">
-  <span><i class="fa fa-plus-square" aria-hidden="true"></i>
-  <span>{{treeNode.label}}</span>
+  <span class="tree-label-node" (click)="nodeClicked(treeNode)">
+    <i class="node-icon" [ngClass]="{'node-icon-exp' : !treeNode.expanded, 'node-icon-cal' : treeNode.expanded}" aria-hidden="true"></i>
+    <span class="tree-label">{{treeNode.label}}</span>
   </span>
-  <div *ngIf="treeNode.children && treeNode.children.length>0" class="tree-children">
-    <treenode [treeNode]="treeNode"></treenode>
+  <div *ngIf="treeNode.expanded && treeNode.children && treeNode.children.length>0" class="tree-children">
+    <div *ngFor="let treeNode of treeNode.children" class="tree-children">
+    <treenode [treeNode]="treeNode" (onNodeClicked)="nodeClicked.bind($event)"></treenode>
+  </div>
+
   </div>
 </div>
