@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TreeNode } from './model/tree-node';
 
 @Component({
@@ -8,13 +8,28 @@ import { TreeNode } from './model/tree-node';
 })
 export class TreeViewComponent{
 
-  @Input('treeItems') treeItems;
+  @Input('treeItems') treeItems :TreeNode<any>[];
+  @Output() onNodeSelected = new EventEmitter<TreeNode<any>>();
   
   constructor() { }
 
-  public nodeClicked(node:TreeNode<any>)
+  public nodeArrowClicked(node:TreeNode<any>)
   {
     node.expanded = !node.expanded;
+  }
+
+  public nodeSelected(node: TreeNode<any>)
+  {
+    this.treeItems.forEach(node=>{this.changeSelectedProperty(node, false);})
+    node.selected = true;
+    this.onNodeSelected.emit(node);
+  }
+
+  private changeSelectedProperty(treeNode:TreeNode<any>, selected:boolean)
+  {
+    treeNode.selected = selected;
+    if(treeNode.children)
+      treeNode.children.forEach(node=>{this.changeSelectedProperty(node, selected);})
   }
 
 }

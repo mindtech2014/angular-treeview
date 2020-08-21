@@ -2,4 +2,11 @@
 <p>
   Start editing to see some magic happen :)
 </p>
-<treeview [treeItems]="treeItems"></treeview>
+<div style="width: 500px; float: left;">
+<treeview [treeItems]="treeItems" (onNodeSelected)="nodeSelected($event)"></treeview>
+</div>
+<div style="width: 500px; float: left;">
+  <span style="display: block;" *ngFor="let msg of messages">
+    {{msg}}
+  </span>
+  </div>

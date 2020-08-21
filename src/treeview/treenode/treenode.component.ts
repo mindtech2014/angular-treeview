@@ -9,13 +9,20 @@ import { TreeNode } from '../model/tree-node';
 export class TreeNodeComponent{
 
   @Input('treeNode') treeNode;
-  @Output() onNodeClicked = new EventEmitter<TreeNode<any>>();
+  @Output() onNodeArrowClicked = new EventEmitter<TreeNode<any>>();
+  @Output() onNodeSelected = new EventEmitter<TreeNode<any>>();
+
 
   constructor() { }
 
-  public nodeClicked(node: TreeNode<any>)
+  public nodeArrowClicked(node: TreeNode<any>)
   {
-    this.onNodeClicked.emit(node);
+    this.onNodeArrowClicked.emit(node);
+  }
+
+  public nodeSelected(node: TreeNode<any>)
+  {
+    this.onNodeSelected.emit(node);
   }
 
 }
