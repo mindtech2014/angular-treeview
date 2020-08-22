@@ -1,4 +1,4 @@
 <div *ngFor="let treeNode of treeItems" class="v-tree-view">
-  <treenode [treeNode]="treeNode" [treeNodeCheckChanged]="treeNodeCheckChanged"
+  <treenode [treeNode]="treeNode" [treeNodeCheckChanged]="treeNodeCheckChanged.bind(this)"
    (onNodeArrowClicked)="nodeArrowClicked($event)" (onNodeSelected)="nodeSelected($event)"></treenode>
 </div>

@@ -29,6 +29,7 @@ export class TreeNodeComponent{
 
   public onCheckbocCheckedChange(node: TreeNode<any>)
   {
+    node.checked = !node.checked;
     console.log(node.checked);
     if(this.treeNodeCheckChanged)
       this.treeNodeCheckChanged(node);
