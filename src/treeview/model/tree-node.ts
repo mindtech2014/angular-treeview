@@ -1,5 +1,7 @@
 export class TreeNode<T>
 {
+  public id: number;
+  public parentId: number;
   public label :string;
   public data: T;
   public children: TreeNode<T>[];

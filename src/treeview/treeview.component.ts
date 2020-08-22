@@ -16,6 +16,14 @@ export class TreeViewComponent implements OnChanges{
   public ngOnChanges(changes: SimpleChanges)
   {
     console.log(changes);
+    if(changes.treeItems && changes.treeItems.currentValue)
+    {
+      changes.treeItems.currentValue.forEach((node, i)=>{ 
+        node.parentId  = null;
+        node.id = i+1;
+        this.setIdsToTreeview(node);
+      });
+    }
   }
 
   public nodeArrowClicked(node:TreeNode<any>)
@@ -30,6 +38,12 @@ export class TreeViewComponent implements OnChanges{
     this.onNodeSelected.emit(node);
   }
 
+  public treeNodeCheckChanged(treeNode: TreeNode<any>)
+  {
+    if(treeNode.children)
+      treeNode.children.forEach(node=>{ node.checked  = treeNode.checked; });
+  }
+
   private changeSelectedProperty(treeNode:TreeNode<any>, selected:boolean)
   {
     treeNode.selected = selected;
@@ -37,10 +51,15 @@ export class TreeViewComponent implements OnChanges{
       treeNode.children.forEach(node=>{this.changeSelectedProperty(node, selected);})
   }
 
-  public treeNodeCheckChanged(treeNode: TreeNode<any>)
+  private setIdsToTreeview(treeNode: TreeNode<any>)
   {
     if(treeNode.children)
-      treeNode.children.forEach(node=>{ node.checked  = treeNode.checked; });
+    {
+      treeNode.children.forEach((node, i)=>{ 
+        node.parentId  = treeNode.id;
+        node.id =  parseInt(node.parentId.toString() +""+ (i+1));
+        this.setIdsToTreeview(node);
+      });
+    }
   }
-
 }
