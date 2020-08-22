@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { TreeViewComponent } from './treeview.component';
 import { TreeNodeComponent } from './treenode/treenode.component';
 import { TreeNode } from './model/tree-node';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, FormsModule
   ],
   declarations: [TreeViewComponent,TreeNodeComponent]
   ,exports: [TreeViewComponent]

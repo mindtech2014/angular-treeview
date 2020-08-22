@@ -9,6 +9,8 @@ import { TreeNode } from '../model/tree-node';
 export class TreeNodeComponent{
 
   @Input('treeNode') treeNode;
+  @Input('treeNodeCheckChanged') treeNodeCheckChanged;
+
   @Output() onNodeArrowClicked = new EventEmitter<TreeNode<any>>();
   @Output() onNodeSelected = new EventEmitter<TreeNode<any>>();
 
@@ -23,6 +25,14 @@ export class TreeNodeComponent{
   public nodeSelected(node: TreeNode<any>)
   {
     this.onNodeSelected.emit(node);
+  }
+
+  public onCheckbocCheckedChange(node: TreeNode<any>)
+  {
+    node.checked = !node.checked;
+    console.log(node.checked);
+    if(this.treeNodeCheckChanged)
+      this.treeNodeCheckChanged(node);
   }
 
 }
