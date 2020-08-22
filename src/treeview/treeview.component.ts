@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { TreeNode } from './model/tree-node';
 
 @Component({
@@ -6,12 +6,17 @@ import { TreeNode } from './model/tree-node';
   templateUrl: './treeview.component.html',
   styleUrls: [ './treeview.css' ]
 })
-export class TreeViewComponent{
+export class TreeViewComponent implements OnChanges{
 
   @Input('treeItems') treeItems :TreeNode<any>[];
   @Output() onNodeSelected = new EventEmitter<TreeNode<any>>();
   
   constructor() { }
+
+  public ngOnChanges(changes: SimpleChanges)
+  {
+    console.log(changes);
+  }
 
   public nodeArrowClicked(node:TreeNode<any>)
   {
@@ -30,6 +35,12 @@ export class TreeViewComponent{
     treeNode.selected = selected;
     if(treeNode.children)
       treeNode.children.forEach(node=>{this.changeSelectedProperty(node, selected);})
+  }
+
+  public treeNodeCheckChanged(treeNode: TreeNode<any>)
+  {
+    if(treeNode.children)
+      treeNode.children.forEach(node=>{ node.checked  = treeNode.checked; });
   }
 
 }

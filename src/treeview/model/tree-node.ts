@@ -5,4 +5,5 @@ export class TreeNode<T>
   public children: TreeNode<T>[];
   public expanded: boolean;
   public selected: boolean;
+  public checked: boolean;
 }
