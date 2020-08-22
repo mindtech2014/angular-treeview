@@ -55,8 +55,6 @@ export class TreeViewComponent implements OnChanges {
       parentTreeNode.checked = allChecked;
       parentTreeNode.indeterminate = !parentTreeNode.checked && checkedLength > 0;
     }
-    console.log(treeNode.id);
-    console.log(treeNode.parentId);
   }
 
   private changeSelectedProperty(treeNode: TreeNode<any>, selected: boolean) {
